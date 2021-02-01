@@ -3,9 +3,9 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 let initialState = {
     posts: [
-        {message: 'Hi, how a u?', id: 1, likesCount: 10},
-        {message: 'Hi, goood', id: 2, likesCount: 1000},
-        {message: 'Yahoooo', id: 3, likesCount: 500},
+        {id: 1, message: 'Hi, how a u?', likesCount: 10},
+        {id: 2, message: 'Hi, goood', likesCount: 1000},
+        {id: 3, message: 'Yahoooo', likesCount: 500},
     ],
     newPostText: 'ARIGAMI'
 };
