@@ -13,8 +13,10 @@ const ProfileInfo = (props) => {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/NVIDIA_SHIELD_TV_2017ver_console.jpg" />
       </div>
       <div className={s.descriptionBlock}>
-        <img src={props.profile.photos.large} />
-        ava+description
+        <div>
+          <img src={props.profile.photos.large} />
+        </div>
+        <div>{props.profile.aboutMe}</div>
       </div>
     </div>
   );

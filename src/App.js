@@ -8,7 +8,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import UsersContainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import ProfileContainer from "./components/Profile/ProfilecContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = () => {
   return (
@@ -17,7 +17,11 @@ const App = () => {
       <Navbar />
       <div className="app-wrapper-content">
         <Route path="/dialogs" render={() => <DialogsContainer />} />
-        <Route path="/profile" render={() => <ProfileContainer />} />
+        <Route
+          path="/profile/:userId?"
+          render={() => <ProfileContainer />}
+        />{" "}
+        {/*  // ? - типо этот параметр  не обязателен (UserId*/}
         <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
@@ -28,3 +32,5 @@ const App = () => {
 };
 
 export default App;
+
+// типо этот параметр  не обязателен
