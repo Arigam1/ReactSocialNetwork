@@ -16,15 +16,10 @@ let Users = (props) => {
       <div>
         {pages.map((p) => {
           return (
-            <span
-              className={props.currentPage === p && styles.selectedPage}
-              onClick={(e) => {
-                props.onPageChanged(p);
-              }}
-            >
+            <span className={props.currentPage === p && styles.selectedPage}
+              onClick={(e) => { props.onPageChanged(p); }}>
               {p}
-            </span>
-          );
+            </span>);
         })}
       </div>
       {props.users.map((u) => (
@@ -32,32 +27,17 @@ let Users = (props) => {
           <span>
             <div>
               <NavLink to={"/profile/" + u.id}>
-                <img
-                  src={u.photos.small != null ? u.photos.small : userPhoto}
-                  className={styles.userPhoto}
-                />
+                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto} />
               </NavLink>
             </div>
             <div>
               {u.followed ? (
-                <button
-                  disabled={props.followingInProgress.some((id) => id === u.id)}
-                  onClick={() => {
-                    props.unfollow(u.id);
-                  }}
-                >
+                <button disabled={props.followingInProgress.some((id) => id === u.id)} onClick={() => { props.unfollow(u.id); }}>
                   unfollow
-                </button>
-              ) : (
-                <button
-                  disabled={props.followingInProgress.some((id) => id === u.id)}
-                  onClick={() => {
-                    props.follow(u.id);
-                  }}
-                >
+                </button>)
+                : (<button disabled={props.followingInProgress.some((id) => id === u.id)} onClick={() => { props.follow(u.id); }}>
                   follow
-                </button>
-              )}
+                </button>)}
             </div>
           </span>
           <span>
