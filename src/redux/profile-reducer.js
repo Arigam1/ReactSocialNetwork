@@ -1,3 +1,5 @@
+import { usersAPI } from "../components/api/api";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -25,10 +27,6 @@ const profileReducer = (state = initialState, action) => {
         posts: [...state.posts, newPost],
         newPostText: "",
       };
-    // stateCopy.posts = [...state.posts];
-    // stateCopy.posts.push(newPost);
-    // stateCopy.newPostText = '';
-    // return stateCopy;
 
     case UPDATE_NEW_POST_TEXT:
       return {
@@ -56,5 +54,29 @@ export const updateNewPostTextActionCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text,
 });
+
+export const getUserProfile = (userId) => {
+  return (dispatch) => {
+    usersAPI.getProfile(userId).then((response) => {
+      dispatch(setUserProfile(response.data));
+    });
+  };
+};
+
+// export const unfollow = (userId) => {
+//   return (dispatch) => {
+//     dispatch(toggleFollowingProgress(true, userId));
+//     usersAPI.unfollow(userId).then((response) => {
+//       if (response.data.resultCode == 0) {
+//         dispatch(unfollowSuccess(userId));
+//       }
+//       dispatch(toggleFollowingProgress(false, userId));
+//     });
+//   };
+// };
+
+// usersAPI.setProfile(userId).then((response) => {
+//   this.props.setUserProfile(response.data);
+// });
 
 export default profileReducer;

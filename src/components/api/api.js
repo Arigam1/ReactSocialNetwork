@@ -18,25 +18,23 @@ export const usersAPI = {
       });
   },
 
-  getUnfollow(id) {
-    return instance.delete(`follow/${id}`);
+  unfollow(userId) {
+    return instance.delete(`follow/${userId}`);
   },
 
-  getFollow(id) {
-    return instance.post(`follow/${id}`);
+  follow(userId) {
+    return instance.post(`follow/${userId}`);
   },
 
-  authMe() {
+  getProfile(userId) {
+    return instance.get(`profile/` + userId);
+  },
+};
+
+export const authAPI = {
+  me() {
     return instance.get(`auth/me`).then((response) => {
       return response.data;
     });
   },
 };
-
-//     .then((response) => {
-//       if (response.data.resultCode === 0) {
-//         let { id, email, login } = response.data.data;
-//         this.props.setAuthUserData(id, email, login);
-//       }
-//     });
-// }
