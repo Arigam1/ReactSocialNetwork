@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import DialogItem from './DialogItem/Dialogitem';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
@@ -7,8 +8,8 @@ import Message from './Message/Message';
 const Dialogs = (props) => {
     let state = props.dialogsPage;
 
-    let dialogsElements = state.dialogs.map ( d => <DialogItem name={d.name} id ={d.id}/> );
-    let messagesElements = state.messages.map (m => <Message message={m.message}/>);
+    let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
+    let messagesElements = state.messages.map(m => <Message message={m.message} />);
     let newMessageBody = state.newMessageBody;
 
     let newMessageElement = React.createRef();
@@ -21,6 +22,9 @@ const Dialogs = (props) => {
         let body = e.target.value;
         props.updateNewMessageBody(body);
     }
+
+    if (!props.isAuth) return <Redirect to={"/login"} />;
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -29,14 +33,14 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
                 <div>
-                    <textarea 
-                        onChange = {onNewMessageChange}
+                    <textarea
+                        onChange={onNewMessageChange}
                         ref={newMessageElement}
                         value={newMessageBody}>
                     </textarea>
                 </div>
                 <div>
-                    <button onClick = {onSendMessageClick}> send </button>
+                    <button onClick={onSendMessageClick}> send </button>
                 </div>
             </div>
         </div>
