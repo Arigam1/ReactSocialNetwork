@@ -1,8 +1,9 @@
-import { usersAPI } from "../components/api/api";
+import { profileAPI } from "../components/api/api";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_STATUS = "SET_STATUS";
 
 let initialState = {
   posts: [
@@ -12,6 +13,7 @@ let initialState = {
   ],
   newPostText: "ARIGAMI",
   profile: null,
+  status: ""
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -38,6 +40,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profile: action.profile,
       };
+    case SET_STATUS:
+      return {
+        ...state,
+        status: action.status,
+      };
     // stateCopy.newPostText = action.newText;
     // return stateCopy;
     default:
@@ -50,6 +57,10 @@ export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
+export const setStatus = (status) => ({
+  type: SET_STATUS,
+  status,
+});
 export const updateNewPostTextActionCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text,
@@ -57,11 +68,27 @@ export const updateNewPostTextActionCreator = (text) => ({
 
 export const getUserProfile = (userId) => {
   return (dispatch) => {
-    usersAPI.getProfile(userId).then((response) => {
+    profileAPI.getProfile(userId).then((response) => {
       dispatch(setUserProfile(response.data));
     });
   };
 };
+
+export const getUserStatus = (userId) => (dispatch) => {
+  profileAPI.getStatus(userId).then((response) => {
+    dispatch(setStatus(response.data));
+  });
+};
+
+export const updateStatus = (status) => (dispatch) => {
+  profileAPI.updateStatus(status).then((response) => {
+    if (response.data.resaultCode === 0) {
+      dispatch(setStatus(response.data));
+    }
+  });
+};
+
+
 
 // export const unfollow = (userId) => {
 //   return (dispatch) => {
