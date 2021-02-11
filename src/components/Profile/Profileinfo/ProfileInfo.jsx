@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
 import Preloader from "../../common/Preloader/Preloader";
-import Avatar from "../../../assets/images/Avatar.png";
+import Avatar1 from "../../../assets/images/Avatar.png";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -12,12 +12,12 @@ const ProfileInfo = (props) => {
   return (
 
     <div>
-      <div className={s.avatar}>
+      <div>
         {/* <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/NVIDIA_SHIELD_TV_2017ver_console.jpg" /> */}
       </div>
       <div className={s.descriptionBlock}>
-        <div>
-          <img src={props.profile.photos.large || Avatar} />
+        <div className={s.avatar}>
+          <img src={props.profile.photos.large != null ? props.profile.photos.large : Avatar1} />
           <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
         </div>
         <div>{props.profile.aboutMe}</div>
