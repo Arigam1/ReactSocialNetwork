@@ -18,7 +18,7 @@ let Users = (props) => {
           return (
             <span className={props.currentPage === p && styles.selectedPage}
               onClick={(e) => { props.onPageChanged(p); }}>
-              {p}
+              {p + '!'}
             </span>);
         })}
       </div>
