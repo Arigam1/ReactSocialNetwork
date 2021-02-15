@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  unfollowSuccess,
-  followSuccess,
+  unfollow,
+  follow,
   setCurrentPage,
   toggleFollowingProgress,
   requestUsers,
@@ -14,11 +14,11 @@ import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, get
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.requestUsers(this.props.currentPage, this.props.pageSize);
+    this.props.getUsers(this.props.page, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.requestUsers(pageNumber, this.props.pageSize);
+    this.props.getUsers(pageNumber, this.props.pageSize);
   };
   render() {
     return (
@@ -30,8 +30,8 @@ class UsersContainer extends React.Component {
           currentPage={this.props.currentPage}
           users={this.props.users}
           onPageChanged={this.onPageChanged}
-          follow={this.props.followSuccess}
-          unfollow={this.props.unfollowSuccess}
+          follow={this.props.follow}
+          unfollow={this.props.unfollow}
           followingInProgress={this.props.followingInProgress}
         />
       </>
@@ -60,7 +60,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, {
-    followSuccess, unfollowSuccess,
-    setCurrentPage, toggleFollowingProgress, requestUsers
+    follow, unfollow,
+    setCurrentPage, toggleFollowingProgress, getUsers: requestUsers
   })
 )(UsersContainer)
