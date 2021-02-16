@@ -28,6 +28,7 @@ const usersReducer = (state = initialState, action) => {
           return u;
         }),
       };
+    case "FAKE": return { ...state, fake: state.fake + 1 };
     case UNFOLLOW:
       return {
         ...state,

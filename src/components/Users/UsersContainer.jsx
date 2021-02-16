@@ -40,6 +40,7 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+  console.log('mapmaapmapamapmapmapammamapam')
   return {
     users: getUsers(state),
     pageSize: getPageSize(state),
