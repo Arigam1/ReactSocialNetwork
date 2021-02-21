@@ -25,9 +25,10 @@ export const initializedApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData())
     //dispatch(someelse)
     //dispatch(someelse)
-    Promise.all([promise]).then(() => {
-        dispatch(initializedSuccess());
-    })
+    Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccess());
+        })
 };
 
 // export const login = (email, password, rememberMe, isAuth) => (dispatch) => {
