@@ -25,6 +25,39 @@ const ProfileStatusWithHooks = (props) => {
     setStatus(e.currentTarget.value)
   };
 
+
+  // state = {
+  //   editMode: false,
+  //   status: this.props.status,
+  // }
+
+  // activateEditMode = () => {
+  //   this.setState({
+  //     editMode: true
+  //   })    // this.forceUpdate()      На крайняК!
+  // }
+  // deactivateEditMode = () => {
+  //   this.setState({
+  //     editMode: false
+  //   })    // this.forceUpdate()      На крайняК!
+  //   this.props.updateStatus(this.state.status)
+  // };
+
+
+  // onStatusChange = (e) => {
+  //   this.setState({
+  //     status: e.currentTarget.value
+  //   })
+  // };
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.status !== this.props.status) {
+  //     this.setState({
+  //       status: this.props.status
+  //     });
+  //   }
+  // };
+
   return (
     <div>
       {!editMode &&
@@ -41,36 +74,6 @@ const ProfileStatusWithHooks = (props) => {
   )
 }
 
-// state = {
-//   editMode: false,
-//   status: this.props.status,
-// }
 
-// activateEditMode = () => {
-//   this.setState({
-//     editMode: true
-//   })    // this.forceUpdate()      На крайняК!
-// }
-// deactivateEditMode = () => {
-//   this.setState({
-//     editMode: false
-//   })    // this.forceUpdate()      На крайняК!
-//   this.props.updateStatus(this.state.status)
-// };
-
-
-// onStatusChange = (e) => {
-//   this.setState({
-//     status: e.currentTarget.value
-//   })
-// };
-
-// componentDidUpdate(prevProps, prevState) {
-//   if (prevProps.status !== this.props.status) {
-//     this.setState({
-//       status: this.props.status
-//     });
-//   }
-// };
 
 export default ProfileStatusWithHooks;
