@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import { initializedApp } from "./redux/app-reducer"
 import Preloader from "./components/common/Preloader/Preloader";
 import store from './redux/redux-store';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { withSuspense } from "./components/hoc/withSuspense";
 
@@ -60,12 +60,14 @@ let AppContainer = compose(
   connect(mapStateToProps, { initializedApp }),
 )(App);
 
+
+// использую хэшроутер потомучто есть деплой на гитхате! в других проектах броузерроутер
 const MainApp = (props) => {
-  return <BrowserRouter>
+  return <HashRouter>
     <Provider store={store}>
       <AppContainer />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 };
 
 export default MainApp;
