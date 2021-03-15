@@ -28,7 +28,7 @@ const MyPosts = React.memo(props => {
   let postElements =
     [...props.posts]      // immutability!!! очень важно в pure function
       .reverse()
-      .map(p => <Post message={p.message} likesCount={p.likesCount} />)
+      .map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />)
 
 
   let onAddPost = (value) => {
