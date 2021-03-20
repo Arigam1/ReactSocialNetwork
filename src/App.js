@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import { Route, withRouter } from "react-router-dom";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import { initializedApp } from "./redux/app-reducer"
 import Preloader from "./components/common/Preloader/Preloader";
 import store from './redux/redux-store';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { withSuspense } from "./components/hoc/withSuspense";
 
@@ -36,13 +36,17 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-          <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)} /> {/*  // ? - типо этот параметр  не обязателен (UserId*/}
-          <Route path="/login" render={() => <Login />} />
-          <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/settings" render={() => <Settings />} />
+          <Switch>
+            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)} /> {/*  // ? - типо этот параметр  не обязателен (UserId*/}
+            <Route path="/login" render={() => <Login />} />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/settings" render={() => <Settings />} />
+            <Route path="*" render={() => <div>404</div>} />
+            <Redirect to="/profile" />
+          </Switch>
         </div>
       </div>
     );
@@ -63,11 +67,11 @@ let AppContainer = compose(
 
 // использую хэшроутер потомучто есть деплой на гитхате! в других проектах броузерроутер
 const MainApp = (props) => {
-  return <HashRouter>
+  return <BrowserRouter>
     <Provider store={store}>
       <AppContainer />
     </Provider>
-  </HashRouter>
+  </BrowserRouter>
 };
 
 export default MainApp;
