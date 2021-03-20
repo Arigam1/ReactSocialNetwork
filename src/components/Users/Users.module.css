@@ -2,3 +2,13 @@
     width: 100px;
     height: 100px;
 }
+
+.users {
+    padding-left: 30px;
+    padding-top: 15px;
+}
+
+.follow{
+    padding-top: 10px;
+    padding-bottom: 15px;
+}

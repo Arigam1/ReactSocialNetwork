@@ -1,35 +1,36 @@
 import React from "react";
 import styles from "./Users.module.css";
-import userPhoto from "../../assets/images/1.png";
+import userPhoto from "../../assets/images/1.jpg";
 import { NavLink } from "react-router-dom";
+import s from '../common/Paginator/Paginator.module.css'
+
 
 let User = ({ user, followingInProgress, unfollow, follow }) => {
-  return <div>
+  return <div className={styles.users}>
     <span>
       <div>
         <NavLink to={"/profile/" + user.id}>
           <img src={user.photos.small != null ? user.photos.small : userPhoto} className={styles.userPhoto} />
         </NavLink>
       </div>
-      <div>
+      <span>
+        <span>
+          <div>Nickname: {user.name}</div>
+          <div>Status: {user.status}</div>
+        </span>
+        <span>
+          <div>Other information...</div>
+        </span>
+      </span>
+      <div className={styles.follow}>
         {user.followed ? (
-          <button disabled={followingInProgress.some((id) => id === user.id)} onClick={() => { unfollow(user.id); }}>
+          <button className={s.justBtn} disabled={followingInProgress.some((id) => id === user.id)} onClick={() => { unfollow(user.id); }}>
             unfollow
           </button>)
-          : (<button disabled={followingInProgress.some((id) => id === user.id)} onClick={() => { follow(user.id); }}>
+          : (<button className={s.justBtn} disabled={followingInProgress.some((id) => id === user.id)} onClick={() => { follow(user.id); }}>
             follow
           </button>)}
       </div>
-    </span>
-    <span>
-      <span>
-        <div>{user.name}</div>
-        <div>{user.status}</div>
-      </span>
-      <span>
-        <div>{"user.location.country"}</div>
-        <div>{"user.location.city"}</div>
-      </span>
     </span>
   </div>
 }

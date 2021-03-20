@@ -3,8 +3,13 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.dialog{
+.userName{
+ text-decoration: none;
+ color: lightskyblue;
+}
 
+.userName:hover{
+ color: red;
 }
 
 .dialogsItems{
@@ -20,5 +25,5 @@
 }
 
 .messages .message{
-    color: white;
+    color: black;
 }

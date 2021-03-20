@@ -9,3 +9,19 @@
 .contact {
   padding-left: 10px;
 }
+
+.profileInfo {
+  padding-top: 15px;
+}
+
+.edit {
+  padding-top: 15px;
+}
+
+.statusCursor{
+  cursor: pointer;
+}
+
+.download{
+  padding-bottom: 10px;
+}

@@ -1,13 +1,64 @@
 
 .paginator {
+    text-align: center;
     margin: 10px;
 }
 .pageNumber {
     padding: 2px;
     border: 1px solid grey;
+    cursor: pointer;
+
 }
 
 .pageNumber.selectedPage {
     font-weight: bold;
     border-color: black;
+}
+
+
+/* КНОПКА)) ??????????????????????????????????? */
+.justBtn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: .05em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: #904C6E;
+    background: white;
+    border: 1px solid;
+    cursor: pointer;
+    transition: .3s linear;
+}
+.justBtn:hover{
+    background: #F0C7A7;
+}
+.justBtn::after{
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    margin-left: 30px;
+    padding-left: 20px;
+    border-left: 1px solid;
+}
+
+.loginBlock{
+    padding-bottom: 20px;
+}
+/* все c addMessageForm//////////////////////////////////// */
+.addMessageForm{
+    padding: 10px;
+}
+
+/* В хеадере логин!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.headerLogin{
+    text-decoration: none;
+    font-size: 1.5em;
 }
